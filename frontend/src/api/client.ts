@@ -11,7 +11,7 @@
 
 import type { Device, DeviceFormData, DeviceStats, Link, Summary } from '../types';
 
-const BASE = '/api';
+const BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 /** Generic fetch helper — throws if response is not 2xx */
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
