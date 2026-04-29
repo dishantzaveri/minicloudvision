@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    container_name: netwatch-backend
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: "5000"
+      FLASK_DEBUG: "false"
+    volumes:
+      - ./backend/instance:/app/instance
+
+  frontend:
+    build: ./frontend
+    container_name: netwatch-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
